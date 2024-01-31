@@ -35,25 +35,26 @@
             <li><a href="{{ url('registration')}}">Register</a></li>
         @else
           @if (auth()->user()->level === 0)
-          <li><a href="{{ url('usersList')}}"><span class="glyphicon glyphicon-home"></span>  Hi, {{ auth()->user()->name }}</a></li>   
-          <li><a href="{{ url('logout')}}"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+          <li><a href="{{ url('usersList')}}">Hi, {{ auth()->user()->name }}</a><div class="sub-menu">
+            <ul>
+              <li><a onclick="logout(event)">Logout</a></li></ul></div></li>   
           @endif
           @if (auth()->user()->level === 1)
             <li><a href="{{ url('dashboard')}}"> Hi, {{ auth()->user()->name }}</a><div class="sub-menu">
               <ul>
               <li><a href="{{ url('list')}}">Todo List</a></li>
-              <li><a href="{{ url('logout')}}">Logout</a></li></ul></div></li>   
+              <li><a onclick="logout(event)">Logout</a></li></ul></div></li>   
             
           @endif
           @if (auth()->user()->level === 2)
-            <li class="active"><a href="{{ url('editOnlyList')}}"><span class="glyphicon glyphicon-list"></span> Todo List</a></li>
-            <li><a href="{{ url('dashboard')}}"><span class="glyphicon glyphicon-home"></span> Hi, {{ auth()->user()->name }}</a></li>   
-            <li><a href="{{ url('logout')}}"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+            <li class="active"><a href="{{ url('editOnlyList')}}">Todo List</a></li>
+            <li><a href="{{ url('dashboard')}}">Hi, {{ auth()->user()->name }}</a></li>   
+            <li><a onclick="logout(event)">Logout</a></li>
           @endif
           @if (auth()->user()->level === 3)
-            <li class="active"><a href="{{ url('viewOnlyList')}}"><span class="glyphicon glyphicon-list"></span> Todo List</a></li>
-            <li><a href="{{ url('dashboard')}}"><span class="glyphicon glyphicon-home"></span> Hi, {{ auth()->user()->name }}</a></li>   
-            <li><a href="{{ url('logout')}}"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+            <li class="active"><a href="{{ url('viewOnlyList')}}">Todo List</a></li>
+            <li><a href="{{ url('dashboard')}}">Hi, {{ auth()->user()->name }}</a></li>   
+            <li><a onclick="logout(event)">Logout</a></li>
           @endif
         @endguest
     </ul>
@@ -64,4 +65,33 @@
 @yield('content')
 
 </body>
+<script>
+  window.logout = function (e) {
+      e.preventDefault();
+      var form = e.target.form;
+      let timerInterval;
+      Swal.fire({
+        title: "Logging Out",
+        html: "",
+        timer: 2000,
+        timerProgressBar: true,
+        didOpen: () => {
+          Swal.showLoading();
+          const timer = Swal.getPopup().querySelector("b");
+          timerInterval = setInterval(() => {
+            timer.textContent = `${Swal.getTimerLeft()}`;
+          }, 100);
+        },
+        willClose: () => {
+          clearInterval(timerInterval);
+        }
+      }).then((result) => {
+        /* Read more about handling dismissals below */
+        if (result.dismiss === Swal.DismissReason.timer) {
+          console.log("I was closed by the timer");
+          window.location.href = "{{ url('logout')}}";
+        }
+      });
+  }
+</script>
 </html>

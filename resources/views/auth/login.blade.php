@@ -21,7 +21,7 @@ section {
 .main {
     width: 500px;
     height: 500px;
-    background: #4a396b;
+    background: #24243e;
     overflow: hidden;
     border-radius: 10px;
     box-shadow: 5px 20px 50px black;
@@ -104,9 +104,38 @@ button:hover {
                 <span class="text-danger">{{ $errors->first('password')}}</span>
             @endif
             <button type="submit" name="submit" id="submit">Login</button>
-          </form>
+            </form>
         </div>
 </div>
 </section>
+<script>
+    window.logout = function (e) {
+        e.preventDefault();
+        var form = e.target.form;
+        let timerInterval;
+        Swal.fire({
+          title: "Logging Out",
+          html: "",
+          timer: 2000,
+          timerProgressBar: true,
+          didOpen: () => {
+            Swal.showLoading();
+            const timer = Swal.getPopup().querySelector("b");
+            timerInterval = setInterval(() => {
+              timer.textContent = `${Swal.getTimerLeft()}`;
+            }, 100);
+          },
+          willClose: () => {
+            clearInterval(timerInterval);
+          }
+        }).then((result) => {
+          /* Read more about handling dismissals below */
+          if (result.dismiss === Swal.DismissReason.timer) {
+            console.log("I was closed by the timer");
+            form.submit();
+          }
+        });
+    }
+  </script>
 
 @endsection

@@ -9,7 +9,7 @@
 ========================================================================== */
 
 :root {
-    --body-color: linear-gradient(to bottom, #0f0c29, #302b63, #24243e);
+    --body-color: repeating-radial-gradient(circle, #0f0c29, #302b63, #24243e);
     --primary-color: #FFF;
     --primary-color-dark: #f1f1f1;
     --text-dark: white;
@@ -38,7 +38,7 @@
   
   html,
   body {
-    background:repeating-linear-gradient(to bottom, #0f0c29, #302b63, #24243e);
+    background:repeating-radial-gradient(circle, #0f0c29, #302b63, #24243e);
     color: var(--text-light);
     height: 100%;
     min-height: 120vh;
@@ -493,7 +493,7 @@
     display: grid;
     font-size: 14px;
     border-bottom: 1px solid #e0e0e0;
-    grid-template-columns: 200px 300px 180px 300px 145px;
+    grid-template-columns: 150px 340px 150px 340px 145px;
     font-family: var(--font-family);
   }
   .table-product-head3 {
@@ -572,7 +572,7 @@
     padding: 0.6rem 0;
     color: #6a727a;
     background-color: #f1f1f1;
-    grid-template-columns: 150px 360px 130px 320px 100px;
+    grid-template-columns: 150px 360px 130px 330px 100px;
     font-family: inherit;
   }
 
@@ -660,8 +660,9 @@
   }
 
 .menu-bar {
-    width: 15%;
+    width: 20%;
     height: 10vh;
+    text-align: center;
 }
 
 .menu-bar ul {
@@ -669,11 +670,12 @@
     display: inline-flex;
 }
 
+
 .menu-bar ul li {
-    width: 100px;
-    margin-top: -20px;
-    padding: 15px;
-    text-align: center;
+  width: 140px;
+  margin-top: -20px;
+  padding: 15px;
+  text-align: center;
 }
 
 .menu-bar ul li a{
@@ -681,20 +683,15 @@
 }
 
 .sub-menu ul {
-  height: 15vh;
+  height: 100%;
 }
 .sub-menu ul li {
   height: 8vh;
 }
 .sub-menu ul li:hover {
   background-color: #24243e;
-  border-radius: 2px;
-  height: 10vh;
-}
-
-.sub-menu ul li:hover {
-    background-color: #24243e;
-    border-radius: 5px;
+  border-radius: 5px;
+  min-height: 8vh;
 }
 
 .sub-menu {
@@ -705,8 +702,8 @@
     display: block;
     position: absolute;
     background: #584088;
-    margin-top: 10px;
-    margin-left: -60px;
+    min-height: 8vh;
+    padding-top: 20px;
 }
 
 .menu-bar ul li:hover .sub-menu ul{
@@ -715,7 +712,12 @@
 }
 
 .menu-bar ul li:hover .sub-menu ul li{
-    width: 160px;
+    width: 100%;
+    height: 100%;
+}
+
+.sub-menu ul li a {
+  cursor: pointer;
 }
   
   /* ==========================================================================

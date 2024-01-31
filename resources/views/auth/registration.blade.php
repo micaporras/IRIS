@@ -21,7 +21,7 @@ section {
 .main {
     width: 500px;
     height: 500px;
-    background: #4a396b;
+    background: #24243e;
     overflow: hidden;
     border-radius: 10px;
     box-shadow: 5px 20px 50px black;

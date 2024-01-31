@@ -27,11 +27,11 @@
         @endif
         <div class="table">
             <div class="table-product-head2">
-                <p>Username</p>
-                <p>Email</p>
-                <p>Level</p>
-                <p>Role</p>
-                <p>Action</p>
+                <h2>Username</h2>
+                <h2>Email</h2>
+                <h2>Level</h2>
+                <h2>Role</h2>
+                <h2>Action</h2>
             </div>
             <div class="table-product-body3">
                 @if (count($users) > 0)
@@ -39,7 +39,15 @@
                         <p>{{$users->name}}</p>
                         <p>{{$users->email}}</p>
                         <p>{{$users->level}}</p>
-                        <p>{{$users->createdby}}</p>
+                        @if ($users->level === 0)
+                        <p>Admin</p>
+                        @elseif ($users->level === 1)
+                        <p>Can add, update, and delete a task</p>
+                        @elseif ($users->level === 2)
+                        <p>Can update a task</p>
+                        @elseif ($users->level === 3)
+                        <p>Can view the tasks</p>
+                        @endif
                         <div class="btn-layout">     
                             <a href="{{ route('editUsers', $users->id)}}" class="btn btn-success" >
                                 <i class="fa-solid fa-pen"></i>
