@@ -14,7 +14,18 @@
                 });
             </script>
         @endif
-<h1>Welcome, {{ auth()->user()->name }}</h1>
+
+<div class="home">
+    <div class="left-home">
+        <div class="user-profile">
+            <i class="fa-regular fa-address-card"></i>
+        </div>
+    <h1>Hi, {{ auth()->user()->name }}</h1>
+    <p>!!!!!!!!!!!!!!!</p></div>
+    <div class="right-home">
+    <h1>Today</h1>
+    <p>!!!!!!!!!!!!!!!</p></div>
+</div>
 
 </div>
 
