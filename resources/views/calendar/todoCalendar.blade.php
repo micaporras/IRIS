@@ -37,6 +37,9 @@
             displayEventTime: false,
             allDay: false,
             eventColor: '#473c5f',
+            dayClick: function(event) {
+                window.location.href = "{{ url('create')}}";
+            },
         })
 
         $('.fc-event').css('font-size', '14px');
@@ -44,12 +47,13 @@
         $('.fc-event').css('background-color', '#473c5f');
         $('.fc-event').css('color', '#ffff');
         $('.fc-event').css('border', 'none');
+        $('.fc-event').css('margin', '0');
         $('.fc-head-container').css('background-color', '#473c5f');
         $('.fc-day-header').css('background-color', '#473c5f');
         $('.fc-day-header').css('color', 'white');
         $('.fc-center h2').css('font-size', '24px');
-        $('.fc-today').css('background-color', '#473c5f');
-        $('.fc').css('color', 'aqua');
+        $('.fc-today').css('background-color', '#0c0c27');
+        $('.fc').css('color', '#473c5f');
         $('.fc-day-grid-container').css('overflow-y', 'hidden');
         $('.fc-button').css('color', '#473c5f');
         $('.fc-view-container').css('color', '#473c5f');

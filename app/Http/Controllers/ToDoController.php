@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Models\ToDo;
 use App\Models\User;
 use App\Models\Bookmark;
@@ -13,15 +14,19 @@ class ToDoController extends Controller
 {
     public function list() 
     {
-        $task = ToDo::orderby('created_at')->get();
-        return view('to-do.list', ['task' => $task]);
+        if(Auth::check()){
+            $task = ToDo::orderby('created_at')->get();
+            return view('to-do.list', ['task' => $task]);
+        }
+        return redirect('login')->withSuccess('Login to access the list');
     }
 
     public function todoCalendar() 
     {
-        $events = array();
-        $todo = Events::all();
-        foreach($todo as $todo) {
+        if(Auth::check()){
+            $events = array();
+            $todo = Events::all();
+            foreach($todo as $todo) {
             $events[] = [
                 'title' => $todo->name,
                 'description' => $todo->description,
@@ -31,8 +36,10 @@ class ToDoController extends Controller
                 'status' => $todo->status,
             ];
         }
-
         return view('calendar.todoCalendar', ['events' => $events]);
+        }
+        return redirect('login')->withSuccess('Login to access the calendar');
+        
     }
 
     public function todoCalendar1() 
@@ -73,31 +80,47 @@ class ToDoController extends Controller
 
     public function editOnlyList() 
     {
-        $task = ToDo::orderby('created_at')->get();
-        return view('to-do.editOnlyList', ['task' => $task]);
+        if(Auth::check()){
+            $task = ToDo::orderby('created_at')->get();
+            return view('to-do.editOnlyList', ['task' => $task]);
+        }
+        return redirect('login')->withSuccess('Login to access the list');
+        
     }
 
     public function viewOnlyList() 
     {
-        $task = ToDo::orderby('created_at')->get();
-        return view('to-do.viewOnlyList', ['task' => $task]);
+        if(Auth::check()){
+            $task = ToDo::orderby('created_at')->get();
+            return view('to-do.viewOnlyList', ['task' => $task]);
+        }
+        return redirect('login')->withSuccess('Login to access the list');
     }
 
     public function usersList() 
     {
-        $users = User::orderby('created_at')->get();
-        return view('users.usersList', ['users' => $users]);
+        if(Auth::check()){
+            $users = User::orderby('created_at')->get();
+            return view('users.usersList', ['users' => $users]);
+        }
+        return redirect('login')->withSuccess('Login to access the list');
     }
 
     public function create()
     {
-        return view('to-do.create');
+        if(Auth::check()){
+            return view('to-do.create');
+        }
+        return redirect('login')->withSuccess('You need to login first');
     }
 
     public function bookmarkTab()
     {
-        $bookmark = Bookmark::orderby('created_at')->get();
-        return view('to-do.bookmarkTab', ['bookmark' => $bookmark]);
+        if(Auth::check()){
+            $bookmark = Bookmark::orderby('created_at')->get();
+            return view('to-do.bookmarkTab', ['bookmark' => $bookmark]);
+        }
+        return redirect('login')->withSuccess('You need to login first');
     }
 
     public function bookmarkTab1()
@@ -142,14 +165,20 @@ class ToDoController extends Controller
 
     public function edit($id)
     {
-        $task = ToDo::findOrFail($id);
-        return view('to-do.edit', ['task' => $task]);
+        if(Auth::check()){
+            $task = ToDo::findOrFail($id);
+            return view('to-do.edit', ['task' => $task]);
+        }
+        return redirect('login')->withSuccess('You need to login first');
     }
 
     public function bookmark($id)
     {
-        $task = ToDo::findOrFail($id);
-        return view('to-do.bookmark', ['task' => $task]);
+        if(Auth::check()){
+            $task = ToDo::findOrFail($id);
+            return view('to-do.bookmark', ['task' => $task]);
+        }
+        return redirect('login')->withSuccess('You need to login first');
     }
 
     public function bookmark1($id)

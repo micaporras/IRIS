@@ -31,7 +31,7 @@ class AuthController extends Controller
     $data = $request->only('name', 'email', 'password');
     $reg_ex = "/[!@#$%^&*()-+=]{1,}/";
     if(preg_match($reg_ex, $data['name'])) {
-        return redirect('registration')->withSuccess('Wrong Credentials');
+        return redirect('registration')->withSuccess('Invalid Credentials');
     }
     else{
         $createUser = $this->create($data);  
@@ -80,4 +80,6 @@ class AuthController extends Controller
         }
         return redirect('login')->withSuccess('Login to access the dashboard');
     }
+
+    
 }

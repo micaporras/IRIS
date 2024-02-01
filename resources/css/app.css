@@ -9,7 +9,7 @@
 ========================================================================== */
 
 :root {
-    --body-color: repeating-radial-gradient(circle, #0f0c29, #302b63, #24243e);
+    --body-color: repeating-linear-gradient(to bottom, #0f0c29, #302b63, #24243e);
     --primary-color: #FFF;
     --primary-color-dark: #f1f1f1;
     --text-dark: white;
@@ -38,7 +38,7 @@
   
   html,
   body {
-    background:repeating-radial-gradient(circle, #0f0c29, #302b63, #24243e);
+    background:repeating-linear-gradient(to bottom, #0f0c29, #302b63, #24243e);
     color: var(--text-light);
     height: 100%;
     min-height: 120vh;
@@ -46,6 +46,7 @@
     line-height: 1.5;
     margin: 0;
     font-family: 'Figtree';
+    background-attachment: fixed;
   }
   
   img,

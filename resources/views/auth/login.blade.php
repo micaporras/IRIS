@@ -14,7 +14,6 @@ section {
     align-items: center;
     min-height: 100vh;
     font-family: 'Jost', sans-serif;
-    background: linear-gradient(to bottom, #0f0c29, #302b63, #24243e);
 }
 
 /* CSS for register and login page */
@@ -30,9 +29,8 @@ section {
 
 .wrapper {
     position: relative;
-    width: 70%;
+    width: 100%;
     height: 100%;
-    margin-left: 15%;
 }
 
 label {
@@ -46,14 +44,16 @@ label {
     transition: 0.5s ease-in-out;
 }
 
-input {
-    width: 100px;
-    height: 40px;
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    width: 80%;
+    height: 30px;
     background: white;
     justify-content: center;
     display: flex;
     margin: 20px auto;
-    padding: 10px;
+    padding: 25px;
     border: none;
     outline: none;
     border-radius: 5px;
@@ -88,10 +88,18 @@ button:hover {
 <section>
 
 <div class="main">
+      @if ($message = Session::get('success'))
+      <script type="text/javascript">
+          Swal.fire({
+          position: "center",
+          icon: "info",
+          title: "{{ $message }}",
+          showConfirmButton: false,
+          timer: 1500
+        });
+      </script>
+    @endif
     <div class="wrapper">
-            @if (Session::has('success'))
-            <div>{{ Session::get('success')}}</div>
-            @endif
             <form method="post" action="{{ route('login.post')}}">
             @csrf
             <label>Login Here</label>
