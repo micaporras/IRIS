@@ -101,7 +101,7 @@ button:hover {
         <div class="wrapper">
             <form method="post" action="{{route('registration.post')}}">
             @csrf
-            <label>Register Here</label>
+            <label>Register</label>
                 <input type="text" name="name" class="form-control" placeholder="Enter your username here" />
                 @if ($errors->has('name'))
                     <span class="text-danger">{{ $errors->first('name')}}</span>

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
+use App\Models\ToDo;
 use Session;
 
 class AuthController extends Controller
@@ -35,7 +36,7 @@ class AuthController extends Controller
     }
     else{
         $createUser = $this->create($data);  
-        return redirect('login')->withSuccess('Registered Successfully'); 
+        return redirect('login')->withSuccess('User Created. Please login'); 
     }
     
     
@@ -76,7 +77,8 @@ class AuthController extends Controller
     public function dashboard()
     {
         if(Auth::check()){
-            return view('dashboard');
+            $task = ToDo::orderby('created_at')->get();
+            return view('dashboard', ['task' => $task]);
         }
         return redirect('login')->withSuccess('Login to access the dashboard');
     }

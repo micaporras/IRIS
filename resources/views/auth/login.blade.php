@@ -102,7 +102,7 @@ button:hover {
     <div class="wrapper">
             <form method="post" action="{{ route('login.post')}}">
             @csrf
-            <label>Login Here</label>
+            <label>Login</label>
             <input type="text" name="email" placeholder="Enter your email here"/>
             @if ($errors->has('email'))
                 <span class="text-danger">{{ $errors->first('email')}}</span>

@@ -31,11 +31,11 @@
         @endif
         <div class="table">
             <div class="table-product-head1">
-                <p>Title</p>
-                <p>Description</p>
-                <p>Status</p>
-                <p>Created by</p>
-                <p>Created at</p>
+                <h2>Title</h2>
+                <h2>Description</h2>
+                <h2>Status</h2>
+                <h2>Created by</h2>
+                <h2>Created at</h2>
             </div>
             <div class="table-product-body2">
                 @if (count($task) > 0)
