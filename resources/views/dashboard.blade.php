@@ -13,7 +13,7 @@
                 timer: 1500
                 });
             </script>
-        @endif
+    @endif
 
 <div class="home">
     <div class="left-home">
