@@ -35,7 +35,7 @@
             selectable: true,
             selectHelper: true,
             displayEventTime: false,
-            allDay: false,
+            allDay: true,
             eventColor: '#473c5f',
             dayClick: function(event) {
                 window.location.href = "{{ url('create')}}";

@@ -22,35 +22,44 @@
         </div>
     <h1>Hi, {{ auth()->user()->name }}</h1>
     <button>Edit Profile</button></div>
-    <div class="right-home">
-    <div class="details"><h1 id="today"></h1>
+    <div class="right-home"><div class="date_today">
+        <h1 id="today"></h1>
         <?php
         $date = date('Y-m-d');
-        $task_date = '{{$task->start}}';
-        foreach ($task as $task) {
-            $current = $task->start;
-            $current1 = $task->end;
+        $iteration = 0;
+        foreach ($task as $tasks) {
+            $current = $tasks->start;
+            $current1 = $tasks->end;
             $summary = '';
-            if ($current === $date or $current === $date) {
-                $summary = "0";
-                $title = $task->name;
-                $desc = $task->description;
-                $date_start = $task->start;
-                $date_end = $task->end;
-                $task_status = $task->status;
-                $task_by = $task->createdby;
-            }else{
+            if ($current1 === $date) {
+                $summary = "Task/s Due Today";
+                $current_date[] = $current1;
+                $titles[] = $tasks->name;
+                $descr[] = $tasks->description;
+                $date_start[] = $tasks->start;
+                $date_end[] = $tasks->end;
+                $task_status[] = $tasks->status;
+                $task_by[] = $tasks->createdby;
+                $iteration += 1;
+            } else {
                 $summary = "No Task Due Today";
             }
         }
         ?>
-        @if ($summary === "0")
-            <h2>Task Title: {{$title}}</h2>
-            <h2>Task Description: {{$desc}}</h2>
-            <h2>Task Started On: {{$date_start}}</h2>
-            <h2>Task Will End On: {{$date_end}}</h2>
-            <h2>Task Is Currently: {{$task_status}}</h2>
-            <h2>Task Is Created By: {{$task_by}}</h2>
+        <h2>{{$summary}}</h2>
+    </div>
+
+    <div class="details">
+        @if ($iteration > 0)
+            @for ($i = 0; $i < $iteration; $i++)
+            <div class="task_container">
+                <h2>Task Title: {{$titles[$i]}}</h2>
+                <h2>Task Description: {{$descr[$i]}}</h2>
+                <h2>Task Start: {{$date_start[$i]}}</h2>
+                <h2>Task Status: {{$task_status[$i]}}</h2>
+                <h2>Task By: {{$task_by[$i]}}</h2>
+            </div>
+            @endfor
         @else
             <h2>{{$summary}}</h2>
         @endif
