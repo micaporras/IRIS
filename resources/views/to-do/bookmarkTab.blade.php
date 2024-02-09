@@ -55,6 +55,10 @@
                 
             </div>
         </div>
+        <div class="titlebar">
+            <h1></h1>
+            <a class="btn-back" href="{{route('list')}}">Back</a></div>
+        </div>
     </section>
 </main>
 <script>

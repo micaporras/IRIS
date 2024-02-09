@@ -27,8 +27,8 @@
         @endif
         <div class="table">
             <div class="table-product-head4">
-                <p>Task</p>
-                <p>Added at</p>
+                <h2>Task</h2>
+                <h2>Added at</h2>
             </div>
             <div class="table-product-body5">
                 @if (count($bookmark) > 0)
@@ -40,6 +40,10 @@
                     <p>No Bookmark Yet</p>
                 @endif
             </div>
+        </div>
+        <div class="titlebar">
+            <h1></h1>
+            <a class="btn-back" href="{{route('list')}}">Back</a></div>
         </div>
     </section>
 </main>

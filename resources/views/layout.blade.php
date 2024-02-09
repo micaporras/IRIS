@@ -37,19 +37,22 @@
           @if (auth()->user()->level === 0)
           <li><a><i class="fa-regular fa-user"></i>   {{ auth()->user()->name }}</a><div class="sub-menu">
             <ul>
+              <li class="active"><a href="{{ url('dashboard')}}">Home</a></li>
               <li><a href="{{ url('usersList')}}">Manage Users</a></li>
               <li><a onclick="logout(event)">Logout</a></li></ul></div></li>   
           @endif
           @if (auth()->user()->level === 1)
             <li><a href="{{ url('dashboard')}}"><i class="fa-regular fa-user"></i>   {{ auth()->user()->name }}</a><div class="sub-menu">
               <ul>
-              <li><a href="{{ url('list')}}">Todo List</a></li>
-              <li><a onclick="logout(event)">Logout</a></li></ul></div></li>   
+                <li class="active"><a href="{{ url('dashboard')}}">Home</a></li>
+                <li><a href="{{ url('list')}}">Todo List</a></li>
+                <li><a onclick="logout(event)">Logout</a></li></ul></div></li>   
             
           @endif
           @if (auth()->user()->level === 2)
             <li><a href="{{ url('dashboard')}}"><i class="fa-regular fa-user"></i>   {{ auth()->user()->name }}</a><div class="sub-menu">
               <ul>
+                <li class="active"><a href="{{ url('dashboard')}}">Home</a></li>
                 <li class="active"><a href="{{ url('editOnlyList')}}">Todo List</a></li>
                 <li><a onclick="logout(event)">Logout</a></li>
             </li></ul></div>   
@@ -58,6 +61,7 @@
           @if (auth()->user()->level === 3)
             <li><a href="{{ url('dashboard')}}"><i class="fa-regular fa-user"></i>   {{ auth()->user()->name }}</a><div class="sub-menu">
               <ul>
+                <li class="active"><a href="{{ url('dashboard')}}">Home</a></li>
                 <li class="active"><a href="{{ url('viewOnlyList')}}">Todo List</a></li>
                 <li><a onclick="logout(event)">Logout</a></li>
             </li></ul></div>   

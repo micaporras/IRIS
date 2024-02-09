@@ -31,13 +31,13 @@
         @endif
         <div class="table">
             <div class="table-product-head">
-                <p>Task</p>
-                <p>Description</p>
-                <p>Start By</p>
-                <p>End By</p>
-                <p>Status</p>
-                <p>Created by</p>
-                <p>Action</p>
+                <h2>Task</h2>
+                <h2>Description</h2>
+                <h2>Start By</h2>
+                <h2>End By</h2>
+                <h2>Status</h2>
+                <h2>Created by</h2>
+                <h2>Action</h2>
             </div>
             <div class="table-product-body1">
                 @if (count($task) > 0)
