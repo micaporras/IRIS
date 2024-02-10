@@ -12,10 +12,20 @@ use App\Models\Events;
 
 class ToDoController extends Controller
 {
-    public function list() 
+    public function list(Request $request, ToDo $task) 
     {
         if(Auth::check()){
-            $task = ToDo::orderby('created_at')->get();
+            // $task = ToDo::orderby('created_at')->get();
+            $keyword = $request->get('search');
+
+            if(!empty($keyword)){
+                $task = ToDo::where('name','LIKE', "%$keyword%")
+                ->orWhere('description', 'LIKE', "%$keyword%")
+                ->get();
+            }
+            else{
+                $task = ToDo::orderby('created_at')->get();
+            }
             return view('to-do.list', ['task' => $task]);
         }
         return redirect('login')->withSuccess('Login to access the list');
