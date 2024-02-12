@@ -60,8 +60,6 @@
                 <h2>Task By: {{$task_by[$i]}}</h2>
             </div>
             @endfor
-        @else
-            <h2>{{$summary}}</h2>
         @endif
         
     </div></div>
