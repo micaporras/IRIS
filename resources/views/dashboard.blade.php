@@ -17,11 +17,13 @@
 
 <div class="home">
     <div class="left-home">
-        <div class="user-profile">
-            <i class="fa-regular fa-address-card"></i>
-        </div>
+        
     <h1>Hi, {{ auth()->user()->name }}</h1>
-    <button>Edit Profile</button></div>
+    <?php
+    $user = auth()->user()->id;
+    ?>
+    <button><a href="{{ route('editProfile', $user)}}">Edit Profile</a></button>
+    </div>
     <div class="right-home"><div class="date_today">
         <h1 id="today"></h1>
         <?php
@@ -62,7 +64,7 @@
             @endfor
         @endif
         
-    </div></div>
+    </div>
 </div>
 
 </div>

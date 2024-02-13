@@ -439,6 +439,20 @@
     color: #341b68;
     font-family: var(--font-family);
   }
+
+  .card1{
+    justify-content: center;
+    color: #341b68;
+    font-family: var(--font-family);
+  }
+
+  .card1 div {
+    background: white;
+    border: 1px solid white;
+    box-shadow: 0 6px 13px -12px rgb(50 50 93 / 20%), 0 3px 7px -3px rgb(110 110 110 / 10%);
+    border-radius: 4px;
+    padding: 20px;
+    }
   
   .card div {
   background: white;
@@ -449,6 +463,11 @@
   }
 
   .card input, .card select, .card textarea{
+    background: #341b68;
+    color: white;
+  }
+
+  .card1 input, .card1 select, .card1 textarea{
     background: #341b68;
     color: white;
   }

@@ -210,6 +210,12 @@ class ToDoController extends Controller
         return view('users.editUsers', ['users' => $users]);
     }
 
+    public function editProfile($id)
+    {
+        $users = User::findOrFail($id);
+        return view('users.editProfile');
+    }
+
     public function update(Request $request, ToDo $task)
     {
         $request->validate([
@@ -379,6 +385,20 @@ class ToDoController extends Controller
 
         $users->save();
         return redirect('usersList')->withSuccess('User Updated');
+    }
+
+    public function updateProfile(Request $request, User $users)
+    {
+        $request->validate([
+            'name' => 'required',
+        ]);
+
+        $users = User::find($request->hidden_id);
+
+        $users->name = $request->name;
+
+        $users->save();
+        return redirect('dashboard')->withSuccess('User Updated');
     }
 
 }

@@ -34,6 +34,7 @@ Route::get('edit/{id}', [ToDoController::class, 'edit'])->name('edit');
 Route::get('bookmark/{id}', [ToDoController::class, 'bookmark'])->name('bookmark');
 Route::get('bookmark1/{id}', [ToDoController::class, 'bookmark1'])->name('bookmark1');
 Route::get('editUsers/{id}', [ToDoController::class, 'editUsers'])->name('editUsers');
+Route::get('editProfile/{id}', [ToDoController::class, 'editProfile'])->name('editProfile');
 Route::get('edit2/{id}', [ToDoController::class, 'edit2'])->name('edit2');
 Route::post('post-store', [ToDoController::class, 'store'])->name('create.post');
 Route::put('update', [ToDoController::class, 'update'])->name('update');
@@ -41,6 +42,7 @@ Route::put('addBookmark', [ToDoController::class, 'addBookmark'])->name('addBook
 Route::put('addBookmark1', [ToDoController::class, 'addBookmark1'])->name('addBookmark1');
 Route::put('update2', [ToDoController::class, 'update2'])->name('update2');
 Route::put('updateUser', [ToDoController::class, 'updateUser'])->name('updateUser');
+Route::put('updateProfile', [ToDoController::class, 'updateProfile'])->name('updateProfile');
 Route::delete('delete/{id}', [ToDoController::class, 'delete'])->name('delete');
 Route::delete('deleteEvent/{id}', [ToDoController::class, 'deleteEvent'])->name('deleteEvent');
 Route::delete('deleteBM/{id}', [ToDoController::class, 'deleteBM'])->name('deleteBM');
