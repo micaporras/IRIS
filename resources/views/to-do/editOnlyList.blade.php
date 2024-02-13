@@ -2,10 +2,29 @@
 @section('content')
 <main class="container">
     <section>
+    {{-- Task Monitoring --}}
+        <div class="monitor" >
+            <div class="card">
+                <div class="card2">
+                    <p>Completed: {{ $countCompletedTasks }}</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card2">
+                <p>Ongoing: {{ $countOngoingTasks }}</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card2">
+                <p>Failed-to-do: {{ $countFailedTasks }}</p>
+                </div>
+            </div>
+        </div>
+    {{-- End of Task Monitoring --}}
         <div class="titlebar">
             <h1>TODO LIST</h1>
             {{-- search --}}
-            <form method="GET" action="{{ route('list')}}" name="search" accept-charset="UTF-8" role="search">
+            <form method="GET" action="{{ route('editOnlyList')}}" name="search" accept-charset="UTF-8" role="search">
                 <div class="searchBox">
                     <input class="searchInput" type="text" name="search" placeholder="Search Task" value="{{ request('search')}}">
                     <button class="searchButton" href="#">

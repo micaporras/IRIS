@@ -92,21 +92,48 @@ class ToDoController extends Controller
         return view('calendar.todoCalendar2', ['events' => $events]);
     }
 
-    public function editOnlyList() 
+    public function editOnlyList(Request $request, ToDo $task) 
     {
         if(Auth::check()){
-            $task = ToDo::orderby('created_at')->get();
-            return view('to-do.editOnlyList', ['task' => $task]);
+            // $task = ToDo::orderby('created_at')->get();
+            $keyword = $request->get('search');
+
+            if(!empty($keyword)){
+                $task = ToDo::where('name','LIKE', "%$keyword%")
+                ->orWhere('description', 'LIKE', "%$keyword%")
+                ->get();
+            }
+            else{
+                $task = ToDo::orderby('created_at')->get();
+            }
+
+            $countCompletedTasks = ToDo::where('status', 'completed')->count();
+            $countOngoingTasks = ToDo::where('status', 'On Going')->count();
+            $countFailedTasks = ToDo::where('status', 'Failed To Do')->count();
+            return view('to-do.editOnlylist', ['task' => $task], compact('countCompletedTasks','countOngoingTasks', 'countFailedTasks'));
         }
         return redirect('login')->withSuccess('Login to access the list');
-        
     }
 
-    public function viewOnlyList() 
+    public function viewOnlyList(Request $request, ToDo $task) 
     {
         if(Auth::check()){
-            $task = ToDo::orderby('created_at')->get();
-            return view('to-do.viewOnlyList', ['task' => $task]);
+            // $task = ToDo::orderby('created_at')->get();
+            $keyword = $request->get('search');
+
+            if(!empty($keyword)){
+                $task = ToDo::where('name','LIKE', "%$keyword%")
+                ->orWhere('description', 'LIKE', "%$keyword%")
+                ->get();
+            }
+            else{
+                $task = ToDo::orderby('created_at')->get();
+            }
+
+            $countCompletedTasks = ToDo::where('status', 'completed')->count();
+            $countOngoingTasks = ToDo::where('status', 'On Going')->count();
+            $countFailedTasks = ToDo::where('status', 'Failed To Do')->count();
+            return view('to-do.viewOnlylist', ['task' => $task], compact('countCompletedTasks','countOngoingTasks', 'countFailedTasks'));
         }
         return redirect('login')->withSuccess('Login to access the list');
     }
