@@ -79,6 +79,11 @@ class AuthController extends Controller
         if(Auth::check()){
             $task = ToDo::orderby('created_at')->get();
             return view('dashboard', ['task' => $task]);
+
+            $countCompletedTasks = ToDo::where('status', 'completed')->count();
+            $countOngoingTasks = ToDo::where('status', 'On Going')->count();
+            $countFailedTasks = ToDo::where('status', 'Failed To Do')->count();
+            return view('dashboard', ['task' => $task], compact('countCompletedTasks','countOngoingTasks', 'countFailedTasks'));
         }
         return redirect('login')->withSuccess('Login to access the dashboard');
     }

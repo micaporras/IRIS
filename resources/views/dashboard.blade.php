@@ -23,6 +23,7 @@
     $user = auth()->user()->id;
     ?>
     <button><a href="{{ route('editProfile', $user)}}">Edit Profile</a></button>
+    {{-- <h1>Completed: {{ $countCompletedTasks }}</h1> --}}
     </div>
     <div class="right-home"><div class="date_today">
         <h1 id="today"></h1>
@@ -76,5 +77,7 @@
         document.getElementById("today").innerHTML = currentDate;
     }
 </script>
+
+
 
 @endsection
