@@ -875,7 +875,7 @@ form[name="search"] {
   align-items: center;
 }
 
-.card {
+.cards {
   width: 210px;
   height: 60px;
   margin-left: 20px;
@@ -884,10 +884,11 @@ form[name="search"] {
   transition: all .3s;
   }
 
-  .card p{
+  .cards p{
   color: #24243e;
   font-weight:bold;
   font-size: larger;
+  padding: 15px 0px 0px 25px;
   }
   
   .card2 {
@@ -904,7 +905,7 @@ form[name="search"] {
   background-color: #ebebef !important;
   }
   
-  .card:hover {
+  .cards:hover {
   box-shadow: 0px 0px 30px 1px rgba(106, 0, 255, 0.3);
   }
   /* ==========================================================================

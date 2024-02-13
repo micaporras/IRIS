@@ -4,17 +4,17 @@
     <section>
     {{-- Task Monitoring --}}
         <div class="monitor" >
-            <div class="card">
+            <div class="cards">
                 <div class="card2">
                     <p>Completed: {{ $countCompletedTasks }}</p>
                 </div>
             </div>
-            <div class="card">
+            <div class="cards">
                 <div class="card2">
                 <p>Ongoing: {{ $countOngoingTasks }}</p>
                 </div>
             </div>
-            <div class="card">
+            <div class="cards">
                 <div class="card2">
                 <p>Failed-to-do: {{ $countFailedTasks }}</p>
                 </div>
