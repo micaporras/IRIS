@@ -26,7 +26,11 @@ class ToDoController extends Controller
             else{
                 $task = ToDo::orderby('created_at')->get();
             }
-            return view('to-do.list', ['task' => $task]);
+
+            $countCompletedTasks = ToDo::where('status', 'completed')->count();
+            $countOngoingTasks = ToDo::where('status', 'On Going')->count();
+            $countFailedTasks = ToDo::where('status', 'Failed To Do')->count();
+            return view('to-do.list', ['task' => $task], compact('countCompletedTasks','countOngoingTasks', 'countFailedTasks'));
         }
         return redirect('login')->withSuccess('Login to access the list');
     }
