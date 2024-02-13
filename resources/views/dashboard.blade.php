@@ -18,12 +18,40 @@
 <div class="home">
     <div class="left-home">
         
-    <h1>Hi, {{ auth()->user()->name }}</h1>
+   <div class="profile"> 
     <?php
     $user = auth()->user()->id;
+    $getMonth = Date('F');
+    $role = auth()->user()->level;
+    $getRole = '';
+    if ($role === 0) {
+        $getRole = "You are the admin";
+    }
+    elseif ($role === 1) {
+        $getRole = "You are User 1. You can add, delete, and edit tasks";
+    }
+    elseif ($role === 2) {
+        $getRole = "You are User 2. You edit tasks";
+    }
+    elseif ($role === 3) {
+        $getRole = "You are User 3. You view tasks";
+    }
     ?>
-    <button><a href="{{ route('editProfile', $user)}}">Edit Profile</a></button>
-    {{-- <h1>Completed: {{ $countCompletedTasks }}</h1> --}}
+    <button><a href="{{ route('editProfile', $user)}}"><i class="fa-regular fa-user"></i></a></button>
+    <h2><br>Hi, {{ auth()->user()->name }}<br><span>{{$getRole}}</span></h2>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <div class="pies">
+            <div>All Tasks</div>
+            <div>Tasks this {{$getMonth}}</div>
+            <div class="pie">
+                <canvas id="pieChart"></canvas>
+            </div>
+            <div class="pie">
+                <canvas id="pieChart1"></canvas>
+            </div>
+        </div>
+    
     </div>
     <div class="right-home"><div class="date_today">
         <h1 id="today"></h1>
@@ -56,11 +84,11 @@
         @if ($iteration > 0)
             @for ($i = 0; $i < $iteration; $i++)
             <div class="task_container">
-                <h2>Task Title: {{$titles[$i]}}</h2>
-                <h2>Task Description: {{$descr[$i]}}</h2>
-                <h2>Task Start: {{$date_start[$i]}}</h2>
-                <h2>Task Status: {{$task_status[$i]}}</h2>
-                <h2>Task By: {{$task_by[$i]}}</h2>
+                <h2>Title: {{$titles[$i]}}</h2>
+                <h2>Description: {{$descr[$i]}}</h2>
+                <h2>Started On: {{$date_start[$i]}}</h2>
+                <h2>Status: {{$task_status[$i]}}</h2>
+                <h2>By: {{$task_by[$i]}}</h2>
             </div>
             @endfor
         @endif
@@ -71,11 +99,61 @@
 </div>
 
 <script>
-    const currentDate = new Date().toDateString();
+    const currentDate = new Date().toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric'
+    });
 
     window.onload = function() {
         document.getElementById("today").innerHTML = currentDate;
     }
+</script>
+
+<script>
+    var ctx = document.getElementById('pieChart').getContext('2d');
+    var myChart = new Chart(ctx, {
+        type: 'pie',
+        data: {
+            labels: @json($label),
+            datasets: [{
+                data: @json($totalTasks),
+                backgroundColor: [
+                    'white',
+                    'rgb(84, 65, 129)',
+                    'rgba(255, 206, 86, 0.7)',
+                    'rgba(75, 192, 192, 0.7)',
+                    'rgba(153, 102, 255, 0.7)',
+                ],
+                borderColor: [
+                    'purple',
+                ],
+                borderWidth: 2
+            }]
+        },
+    });
+
+    var ctx = document.getElementById('pieChart1').getContext('2d');
+    var myChart = new Chart(ctx, {
+        type: 'pie',
+        data: {
+            labels: @json($label),
+            datasets: [{
+                data: @json($totalTasks1),
+                backgroundColor: [
+                    'white',
+                    'rgb(84, 65, 129)',
+                    'rgba(255, 206, 86, 0.7)',
+                    'rgba(75, 192, 192, 0.7)',
+                    'rgba(153, 102, 255, 0.7)',
+                ],
+                borderColor: [
+                    'purple',
+                ],
+                borderWidth: 2
+            }]
+        },
+    });
 </script>
 
 

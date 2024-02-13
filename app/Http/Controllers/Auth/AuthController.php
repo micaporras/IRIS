@@ -77,13 +77,20 @@ class AuthController extends Controller
     public function dashboard()
     {
         if(Auth::check()){
+            $month = date('m');
+            $label = ["Completed", "Total" ];
             $task = ToDo::orderby('created_at')->get();
-            return view('dashboard', ['task' => $task]);
-
             $countCompletedTasks = ToDo::where('status', 'completed')->count();
             $countOngoingTasks = ToDo::where('status', 'On Going')->count();
             $countFailedTasks = ToDo::where('status', 'Failed To Do')->count();
-            return view('dashboard', ['task' => $task], compact('countCompletedTasks','countOngoingTasks', 'countFailedTasks'));
+            $total = ToDo::orderby('created_at')->count();
+            $totalTasks = [$countCompletedTasks, $total];
+            $tasksThisMonth = ToDo::whereRaw('MONTH(start) = ?', [$month])->count();
+            $completedTasksThisMonth = ToDo::where('status', 'completed')
+            ->whereRaw('MONTH(start) = ?', [$month])
+            ->count();
+            $totalTasks1 = [$completedTasksThisMonth, $tasksThisMonth];
+            return view('dashboard', ['task' => $task], compact('countCompletedTasks','countOngoingTasks', 'countFailedTasks', 'totalTasks', 'label', 'totalTasks1', 'month'));
         }
         return redirect('login')->withSuccess('Login to access the dashboard');
     }
