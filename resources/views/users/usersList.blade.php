@@ -2,6 +2,23 @@
 @section('content')
 <main class="container">
     <section>
+        <div class="monitor" >
+            <div class="cards">
+                <div class="card2">
+                    <p>No. of User 1: {{ $countUser1 }}</p>
+                </div>
+            </div>
+            <div class="cards">
+                <div class="card2">
+                <p>No. of User 2: {{ $countUser2 }}</p>
+                </div>
+            </div>
+            <div class="cards">
+                <div class="card2">
+                <p>No. of User 3: {{ $countUser3 }}</p>
+                </div>
+            </div>
+        </div>
         <div class="titlebar">
             <h1>USERS' LIST</h1>
         </div>

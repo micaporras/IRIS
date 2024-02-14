@@ -112,6 +112,7 @@
 
 <script>
     var ctx = document.getElementById('pieChart').getContext('2d');
+    Chart.defaults.color = 'white';
     var myChart = new Chart(ctx, {
         type: 'pie',
         data: {
@@ -128,7 +129,7 @@
                 borderColor: [
                     'purple',
                 ],
-                borderWidth: 2
+                borderWidth: 2,
             }]
         },
     });

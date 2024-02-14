@@ -35,9 +35,9 @@
                     </select>
                     <div class="startEnd">
                     <label>Task Start</label>
-                    <input type="date" name="start" id="start_date" class="form-control onlydatepicker" placeholder="Start By">
+                    <input type="date" name="start" id="start_date" class="form-control onlydatepicker" placeholder="Start By" >
                     <label>Task End</label>
-                    <input type="date" name="end" id="end_date" class="form-control" placeholder="End By">
+                    <input type="date" name="end" id="end_date" class="form-control" placeholder="End By" >
                     </div>
             </div>
             </div>

@@ -142,7 +142,10 @@ class ToDoController extends Controller
     {
         if(Auth::check()){
             $users = User::orderby('created_at')->get();
-            return view('users.usersList', ['users' => $users]);
+            $countUser1 = User::where('level', '1')->count();
+            $countUser2 = User::where('level', '2')->count();
+            $countUser3 = User::where('level', '3')->count();
+            return view('users.usersList', ['users' => $users], compact('countUser1', 'countUser2', 'countUser3'));
         }
         return redirect('login')->withSuccess('Login to access the list');
     }
