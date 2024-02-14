@@ -821,6 +821,7 @@
   border-radius: 10px;
   border: 1px solid rgb(250, 250, 250);
   min-height: 25vh;
+  cursor: pointer;
 }
 
 .task_container h2 {
@@ -941,6 +942,11 @@ form[name="search"] {
   .pies {
     display: grid;
     grid-template-columns: 50% 50%;
+  }
+
+  .pies h3 {
+    font-size: x-large;
+    font-weight: 600;
   }
 
   .pie {

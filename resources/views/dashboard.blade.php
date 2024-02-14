@@ -42,8 +42,8 @@
     </div>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
         <div class="pies">
-            <div>All Tasks</div>
-            <div>Tasks this {{$getMonth}}</div>
+            <div><h3>All Tasks</h3></div>
+            <div><h3>Tasks this {{$getMonth}}</h3></div>
             <div class="pie">
                 <canvas id="pieChart"></canvas>
             </div>
