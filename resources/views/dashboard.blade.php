@@ -127,8 +127,8 @@
                     'rgba(153, 102, 255, 0.7)',
                 ],
                 borderColor: [
-                    'whitesmoke',
-                    'purple',
+                    'rgb(90, 79, 109)',
+                    'rgb(49, 9, 49)',
                     
                 ],
                 borderWidth: 3,
@@ -153,7 +153,7 @@
                 borderColor: [
                     'purple',
                 ],
-                borderWidth: 2
+                borderWidth: 3
             }]
         },
     });

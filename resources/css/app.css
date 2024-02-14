@@ -936,7 +936,7 @@ form[name="search"] {
   
   .cards:hover {
   box-shadow: 0px 0px 30px 1px rgba(106, 0, 255, 0.3);
-
+    /* color: rgba(106, 0, 255, 0.3); */
   }
 
   .pies {
