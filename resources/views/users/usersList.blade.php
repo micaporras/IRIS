@@ -5,17 +5,17 @@
         <div class="monitor" >
             <div class="cards">
                 <div class="card2">
-                    <p>No. of User 1: {{ $countUser1 }}</p>
+                    <p>Level 1 No. of Users: {{ $countUser1 }}</p>
                 </div>
             </div>
             <div class="cards">
                 <div class="card2">
-                <p>No. of User 2: {{ $countUser2 }}</p>
+                <p>Level 2 No. of Users: {{ $countUser2 }}</p>
                 </div>
             </div>
             <div class="cards">
                 <div class="card2">
-                <p>No. of User 3: {{ $countUser3 }}</p>
+                <p>Level 3 No. of Users: {{ $countUser3 }}</p>
                 </div>
             </div>
         </div>

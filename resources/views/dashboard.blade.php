@@ -31,10 +31,10 @@
         $getRole = "You are User 1. You can add, delete, and edit tasks";
     }
     elseif ($role === 2) {
-        $getRole = "You are User 2. You edit tasks";
+        $getRole = "You are User 2. You can edit tasks";
     }
     elseif ($role === 3) {
-        $getRole = "You are User 3. You view tasks";
+        $getRole = "You are User 3. You can view tasks";
     }
     ?>
     <button><a href="{{ route('editProfile', $user)}}"><i class="fa-regular fa-user"></i></a></button>
@@ -127,9 +127,11 @@
                     'rgba(153, 102, 255, 0.7)',
                 ],
                 borderColor: [
+                    'whitesmoke',
                     'purple',
+                    
                 ],
-                borderWidth: 2,
+                borderWidth: 3,
             }]
         },
     });

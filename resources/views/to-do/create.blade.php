@@ -19,12 +19,15 @@
             @endif
             <div class="card">
             <div>
+                <?php
+                    $date = date('Y-m-d');
+                ?>
                     <label>Task Title</label>
                     <input type="text" name="name">
                     <label>Task Description (optional)</label>
                     <textarea cols="10" rows="5" name="description"></textarea>
                     <label>Created by</label>
-                    <input type="text" name="createdby" >
+                    <input type="text" name="createdby" value="{{auth()->user()->name}}">
                 </div>
             <div>
                     <label>Status</label>
@@ -35,9 +38,9 @@
                     </select>
                     <div class="startEnd">
                     <label>Task Start</label>
-                    <input type="date" name="start" id="start_date" class="form-control onlydatepicker" placeholder="Start By" >
+                    <input type="date" name="start" id="start_date" class="form-control onlydatepicker" placeholder="Start By" value="{{$date}}">
                     <label>Task End</label>
-                    <input type="date" name="end" id="end_date" class="form-control" placeholder="End By" >
+                    <input type="date" name="end" id="end_date" class="form-control" placeholder="End By" value="{{$date}}">
                     </div>
             </div>
             </div>
