@@ -128,7 +128,7 @@
                 ],
                 borderColor: [
                     // 'rgb(90, 79, 109)',
-                    'rgb(49, 9, 49)',
+                    'purple',
                     
                 ],
                 borderWidth: 3,
